@@ -64,3 +64,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.ql-editor {
+  @apply prose;
+}
+
+.ql-editor.render-content {
+  @apply p-0 mb-1;
+}
