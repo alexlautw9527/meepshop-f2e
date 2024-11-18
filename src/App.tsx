@@ -1,5 +1,7 @@
+import { ContentEditorPage } from '@/features/contententEditor/pages/ContentEditorPage';
+
 function App() {
-  return <p>Hello</p>;
+  return <ContentEditorPage />;
 }
 
 export default App;

@@ -79,6 +79,8 @@ module.exports = {
       { restrictDefaultExports: { defaultFrom: false } },
     ],
 
+    "react/function-component-definition": "off",
+
     // underscore 的變數(_) 不會被檢查
     'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/no-unused-vars': [
