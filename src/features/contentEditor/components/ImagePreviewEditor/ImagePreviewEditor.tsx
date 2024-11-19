@@ -49,7 +49,7 @@ export const ImagePreviewEditor: FC<{
   }, [content.id, imageData, onEdit, isEditing]);
 
   return (
-    <div onDoubleClick={handleOpenEdit}>
+    <div onDoubleClick={handleOpenEdit} className="min-h-1">
       {isEditing ? (
         <div
           ref={inputRef}
