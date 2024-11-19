@@ -21,7 +21,7 @@ import type {
 
 import { createNewContent } from '@/features/contentEditor/utils';
 import { generateUniqueId } from '@/lib/utils';
-import { CarouselPreviewEditor } from '@/features/contentEditor/components/CarosouselPreviewEditor/CarosouselPreviewEditor';
+import { CarouselPreviewEditor } from '@/features/contentEditor/components/CarouselPreviewEditor/CarouselPreviewEditor';
 
 const Container = ({ children }: PropsWithChildren) => (
   <div className="flex h-screen relative">{children}</div>

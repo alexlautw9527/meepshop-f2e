@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# 專案說明
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 啟動專案
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 技術選型
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- 基礎建設：React、TypeScript、Vite，並設置 path alias
+- DnD 拖曳功能套件： DnD Kit，為近年順手好用的 DnD 套件（react-beautiful-dnd 已不再維護）
+- WYSIWYG Rich Editor 套件：react-quill
+- CSS：tailwind
+- ESLint：Airbnb 並整合 Prettier
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## 專案架構
+
+在現階段，用 features 資料夾以 co-location 概念，以功能模組拆分資料夾結構，將相關檔案聚集在一起，能夠提供較好的擴展性與維護性
+
+由於這次有加入 Rich Editor，故把編輯模式的功能做在右側內容元件較為合適
+
+
 ```
+.
+└── /src
+    ├── /components
+    ├── /hooks
+    └── /features
+        ├── /otherFeatures
+        └── /contentEditor
+            ├── /components
+            │   ├── /ContentEditor // 主要編輯器整合
+            │   ├── /DnD // 拖曳相關元件
+            │   ├── /CarouselPreviewEditor // 幻燈片元件
+            │   ├── /ImagePreviewEditor // 圖片內容元件（包含編輯模式）
+            │   └── /TextPreviewEditor // Rich Text 內容元件（包含編輯模式）
+            ├── /pages
+            ├── types.ts
+            ├── constants.ts
+            ├── data.ts
+            └── utils.ts
+```
+
+## 功能說明
+
+- 將內容元件從左側拖曳右側，即可新增
+- 圖片與文字元件，可雙擊開啟編輯模式，點擊元件外區塊，即可退出編輯模式
+- 每個元件 hover 過後，會出現刪除鍵，可進行刪除

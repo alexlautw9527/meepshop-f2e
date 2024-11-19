@@ -1,4 +1,4 @@
-import { FC, useState, useRef } from 'react';
+import { FC, useState, useRef, useEffect } from 'react';
 import { X as CrossIcon } from 'lucide-react';
 import { useClickOutside } from '@/hooks/useClickOutside';
 
@@ -40,6 +40,13 @@ export const ImagePreviewEditor: FC<{
     setImageData((prev) => ({ ...prev, ...updated }));
     onEdit({ id: content.id, ...imageData, ...updated });
   };
+
+  useEffect(() => {
+    if (imageData.width <= 10 && !isEditing) {
+      setImageData((prev) => ({ ...prev, width: 10 }));
+      onEdit({ id: content.id, ...imageData, width: 10 });
+    }
+  }, [content.id, imageData, onEdit, isEditing]);
 
   return (
     <div onDoubleClick={handleOpenEdit}>
