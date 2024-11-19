@@ -1,4 +1,4 @@
-import { ContentEditorPage } from '@/features/contententEditor/pages/ContentEditorPage';
+import { ContentEditorPage } from '@/features/contentEditor/pages/ContentEditorPage';
 
 function App() {
   return <ContentEditorPage />;
