@@ -44,7 +44,10 @@ export const ImagePreviewEditor: FC<{
   return (
     <div onDoubleClick={handleOpenEdit}>
       {isEditing ? (
-        <div ref={inputRef} className="p-2 border border-gray-300 rounded-md">
+        <div
+          ref={inputRef}
+          className="mb-1 p-2 border border-gray-300 rounded-md"
+        >
           <label htmlFor="image-url" className="block mb-1">
             Image URL
           </label>
@@ -61,7 +64,6 @@ export const ImagePreviewEditor: FC<{
           </label>
           <input
             id="image-width"
-            type="number"
             value={imageData.width}
             onChange={(e) => handleUpdateContent({ width: +e.target.value })}
             className="mb-2 p-1 border rounded w-full"
@@ -69,7 +71,7 @@ export const ImagePreviewEditor: FC<{
           />
         </div>
       ) : (
-        <div className="group relative">
+        <div className="group relative mb-1">
           <img
             src={imageData.src}
             alt=""

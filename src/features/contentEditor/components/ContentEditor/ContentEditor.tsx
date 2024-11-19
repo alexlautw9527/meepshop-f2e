@@ -21,17 +21,18 @@ import type {
 
 import { createNewContent } from '@/features/contentEditor/utils';
 import { generateUniqueId } from '@/lib/utils';
+import { CarouselPreviewEditor } from '@/features/contentEditor/components/CarosouselPreviewEditor/CarosouselPreviewEditor';
 
 const Container = ({ children }: PropsWithChildren) => (
-  <div className="flex h-screen">{children}</div>
+  <div className="flex h-screen relative">{children}</div>
 );
 
 const MainContent = ({ children }: PropsWithChildren) => (
-  <main className="w-full overflow-y-auto">{children}</main>
+  <main className="w-full overflow-y-auto z-10 relative">{children}</main>
 );
 
 const Sidebar: FC = () => (
-  <div className="w-64 p-4 border-r space-y-4 h-screen">
+  <div className="w-64 p-4 border-r space-y-4 h-screen relative">
     <h2 className="font-semibold mb-4">新增內容元件</h2>
     <Draggable id="text">
       <ItemCard type="text" />
@@ -84,7 +85,13 @@ export const ContentListView = ({
             />
           );
         case 'carousel':
-          return <div>carousel</div>;
+          return (
+            <CarouselPreviewEditor
+              key={content.id}
+              content={content}
+              onDelete={onDelete}
+            />
+          );
         default:
           return null;
       }

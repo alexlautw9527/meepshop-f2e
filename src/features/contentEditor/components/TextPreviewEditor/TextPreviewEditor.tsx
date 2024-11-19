@@ -40,14 +40,20 @@ export const TextPreviewEditor: FC<TextPreviewEditorProps> = ({
     onEdit(content.id, value);
   };
 
+  // tooltip 被遮住的解法 https://github.com/slab/quill/issues/360#issuecomment-810425327
   return (
     <div onDoubleClick={handleOpenEdit}>
       {isEditing ? (
         <div
           ref={quillRef}
+          data-text-editor="editor"
           className="p-2 border border-gray-300 rounded-md cursor-pointer"
         >
-          <ReactQuill value={text} onChange={handleTextChange} />
+          <ReactQuill
+            value={text}
+            onChange={handleTextChange}
+            bounds='[data-text-editor="editor"]'
+          />
         </div>
       ) : (
         <div className="relative cursor-pointer hover:rounded-md hover:border-gray-400 hover:bg-gray-100 group">
